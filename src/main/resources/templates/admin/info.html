@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <!--    <link rel="stylesheet" href="/static/css/http_cdn.jsdelivr.net_semantic-ui_2.2.4_semantic.min.css">-->
+    <link rel="stylesheet" href="../../static/css/myStyle.css">
+    <link rel="stylesheet" href="../../static/lib/editorMd/css/editormd.css">
+
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="/static/lib/editorMd/editormd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!--    <script src="/static/js/myScript.js" type="text/javascript" charset="UTF-8" language="JavaScript"></script>-->
+
+</head>
+<body>
+
+<nav th:replace="/fragment/fragmentNav::adminNav"></nav>
+
+<div class="m-padded-tb-larger">
+    <div class="ui container">
+        <div class="ui grid">
+            <div class="eleven wide column">
+                <div class="ui attached segment">
+                    <div class="ui padded vertical segment">
+                        <div class="ui grid">
+                            <div class="four wide column">
+                                <!--此处放头像-->
+                                <img class="ui tiny circular  image" src="https://unsplash.it/100/100?image=1005"
+                                     alt="个人头像" id="avatar">
+                            </div>
+                            <div class="twelve wide column">
+                                <h2 class="ui header teal">写代码的猫</h2>
+                                <div class="ui grid">
+                                    <div class="five wide column">
+                                        1
+                                        <a href="#">关注</a>
+                                    </div>
+                                    <div class="five wide column segment">
+                                        0
+                                        <a href="#">粉丝</a>
+                                    </div>
+                                    <div class="six wide column">
+                                        0
+                                        <a href="#">博客</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui divider"></div>
+                        <div class="ui grid">
+                            <div class="three wide column">
+                                <a href="#" class="ui active item" id="blogs"><i class="file text icon"></i>文章</a>
+                            </div>
+                            <div class="three wide column">
+                                <a href="#" id="messages"><i class="alarm icon"></i>动态</a>
+                            </div>
+                            <div class="three wide column">
+                                <a href="#" id="comments"><i class="comments icon"></i>最新评论</a>
+                            </div>
+                            <div class="seven wide column left aligned">
+                                <a href="#" id="info"><i class="diamond icon"></i>个人资料</a>
+                            </div>
+                        </div>
+                        <div class="ui divider"></div>
+                        <div id="mainContent">
+                            <div id="infoContent" style="display: none">
+                                <div class="m-margin-left-mid">
+                                    <div class="ui grid">
+                                        <div class="ui eight wide column center aligned">
+                                            <div class="ui item teal">用户名</div>
+                                        </div>
+                                        <div class="ui eight wide column">
+                                            <div id="userName"></div>
+                                        </div>
+                                    </div>
+                                    <div class="ui divider"></div>
+                                    <div class="ui grid">
+                                        <div class="ui eight wide column center aligned">
+                                            <div class="ui item teal">密码</div>
+                                        </div>
+                                        <div class="ui eight wide column">
+                                            <div id="userPassword">*********</div>
+                                        </div>
+                                    </div>
+                                    <div class="ui divider"></div>
+                                    <div class="ui grid">
+                                        <div class="ui eight wide column center aligned">
+                                            <div class="ui item teal">昵称</div>
+                                        </div>
+                                        <div class="ui eight wide column">
+                                            <div id="userNickname"></div>
+                                        </div>
+                                    </div>
+                                    <div class="ui divider"></div>
+                                </div>
+                            </div>
+
+                            <div id="blogsContent" style="display: inline">
+                                <div class="ui attached  segment">
+                                    <div class="ui padded vertical segment">
+                                        <div class="ui grid">
+                                            <div class="eleven wide column">
+                                                <h3 class="ui header">博客标题</h3>
+                                                <p class="m-text-tiny">
+                                                    此处是博客的内容摘要。正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标的正确定义，圣诞节覅算法就开始的办法便是覅四点八零发i受到广泛喀什发给我了股份饭卡上播放发哈广发潍坊路i全额付给</p>
+                                                <div class="ui grid">
+                                                    <div class="twelve wide column">
+                                                        <div class="ui horizontal link list">
+                                                            <div class="item">
+                                                                <img src="https://unsplash.it/100/100?image=1005" alt=""
+                                                                     class="ui avatar image">
+                                                                <div class="content"><a href="#"
+                                                                                        class="header">nikeName</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="item">
+                                                                <i class="calendar icon"></i>2020-5-11
+                                                            </div>
+                                                            <div class="item">
+                                                                <i class="eye icon"></i>30
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="four wide column right aligned">
+                                                        <a href="#" class="ui label teal basic"> 认知升级</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="five wide column">
+                                                <a href="#" target="_blank">
+                                                    <img src="https://unsplash.it/800/400?image=1005" alt="博客配图"
+                                                         class="ui rounded image">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="commentsContent" style="display: none">
+                                <div class="ui comments">
+                                    <h3 class="ui dividing header">Comments</h3>
+                                    <div class="comment">
+                                        <a class="avatar">
+                                            <img src="/images/avatar/small/matt.jpg">
+                                        </a>
+                                        <div class="content">
+                                            <a class="author">Matt</a>
+                                            <div class="metadata">
+                                                <span class="date">Today at 5:42PM</span>
+                                            </div>
+                                            <div class="text">
+                                                How artistic!
+                                            </div>
+                                            <div class="actions">
+                                                <a class="reply">Reply</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment">
+                                        <a class="avatar">
+                                            <img src="/images/avatar/small/elliot.jpg">
+                                        </a>
+                                        <div class="content">
+                                            <a class="author">Elliot Fu</a>
+                                            <div class="metadata">
+                                                <span class="date">Yesterday at 12:30AM</span>
+                                            </div>
+                                            <div class="text">
+                                                <p>This has been very useful for my research. Thanks as well!</p>
+                                            </div>
+                                            <div class="actions">
+                                                <a class="reply">Reply</a>
+                                            </div>
+                                        </div>
+                                        <div class="comments">
+                                            <div class="comment">
+                                                <a class="avatar">
+                                                    <img src="/images/avatar/small/jenny.jpg">
+                                                </a>
+                                                <div class="content">
+                                                    <a class="author">Jenny Hess</a>
+                                                    <div class="metadata">
+                                                        <span class="date">Just now</span>
+                                                    </div>
+                                                    <div class="text">
+                                                        Elliot you are always so right :)
+                                                    </div>
+                                                    <div class="actions">
+                                                        <a class="reply">Reply</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment">
+                                        <a class="avatar">
+                                            <img src="/images/avatar/small/joe.jpg">
+                                        </a>
+                                        <div class="content">
+                                            <a class="author">Joe Henderson</a>
+                                            <div class="metadata">
+                                                <span class="date">5 days ago</span>
+                                            </div>
+                                            <div class="text">
+                                                Dude, this is awesome. Thanks so much
+                                            </div>
+                                            <div class="actions">
+                                                <a class="reply">Reply</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="messagesContent" style="display: none">
+                                此处是私信消息
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="five wide column">
+                <div class="ui grid">
+                    <div class="ui eight wide column left aligned">
+                        <h5 class="ui header">个人介绍</h5>
+                    </div>
+                    <div class="ui eight wide column right aligned">
+                        <a href=""><i class="pencil icon"></i>编辑</a>
+                    </div>
+                </div>
+                <div class="ui divider"></div>
+                <h5 class="ui.header">我的标签</h5>
+                <div class="ui link list" id="tagsList">
+                    <!--                    <div class="item"><a href=""><i class="idea icon"></i>学习</a></div>-->
+                    <!--                    <div class="item"><a href=""><i class="idea icon"></i>工作</a></div>-->
+                </div>
+                <form action="" id="addTagsForm" class="ui form m-margin-tb-mid" style="display: none">
+                    <input type="text" class="ui input teal m-margin-tb-mid" id="newTag">
+                    <button class="ui button teal" type="submit" id="tagSubmit">保存</button>
+                    <button class="ui button" type="button" id="tagOff">取消</button>
+                </form>
+                <a href="" id="addTags"><i class="add icon"></i>创建新的标签</a>
+
+                <div class="ui divider"></div>
+                <h5 class="ui header">我的分类</h5>
+                <div class="ui link list" id="typesList">
+<!--                    <div class="item"><a href=""><i class="coffee icon"></i>java</a></div>-->
+<!--                    <div class="item"><a href=""><i class="configure icon"></i>C++</a></div>-->
+                </div>
+                <form action="" id="addTypesForm" class="ui form m-margin-tb-mid" style="display: none">
+                    <input type="text" class="ui input teal m-margin-tb-mid" id="newType">
+                    <button class="ui button teal" type="submit" id="typeSubmit">保存</button>
+                    <button class="ui button" type="button" id="typeOff">取消</button>
+                </form>
+                <a href="" id="addTypes"><i class="add icon"></i>添加新的分类</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function Tag(name) {
+        this.name = name;
+    }
+    function Type(name){
+        this.name = name;
+    }
+
+    $("#info").click(function (event) {
+        event.preventDefault();
+        $.getJSON("/api/userInfo", function (data) {
+            $("#userName").append(data.userName);
+            $("#userNickname").append(data.nickName);
+        })
+
+        $('#commentsContent').css('display', 'none');
+        $("#infoContent").css('display', 'inline');
+        $("#blogsContent").css('display', "none");
+        $("#messagesContent").css("display", "none");
+    });
+
+    $("#blogs").click(function (event) {
+        event.preventDefault();
+        $('#commentsContent').css('display', 'none');
+        $("#infoContent").css('display', 'none');
+        $("#blogsContent").css('display', "inline");
+        $("#messagesContent").css("display", "none");
+    });
+
+    $("#messages").click(function (event) {
+        event.preventDefault();
+        $('#commentsContent').css('display', 'none');
+        $("#infoContent").css('display', 'none');
+        $("#blogsContent").css('display', "none");
+        $("#messagesContent").css("display", "inline");
+    });
+
+    $("#comments").click(function (event) {
+        event.preventDefault();
+        $('#commentsContent').css('display', 'inline');
+        $("#infoContent").css('display', 'none');
+        $("#blogsContent").css('display', "none");
+        $("#messagesContent").css("display", "none");
+    });
+
+    /*弹出新建框*/
+    $("#addTags").click(function (event) {
+        event.preventDefault();
+        $("#addTagsForm").css("display", "block");
+    });
+    /*提交新建*/
+    $("#tagSubmit").click(function (event) {
+        event.preventDefault();
+        $("#addTagsForm").css("display", "none");
+        const name = $("#newTag").val();
+        const tag = new Tag(name)
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "http://localhost:8080/api/tag/add",
+            data: JSON.stringify(tag),
+            success: function (result) {
+                const Data = $.parseJSON(result);
+                const message = Data.message;
+                if(message == "OK"){
+                    $("#tagsList").append("<div class=\"item\"><a href=\"\"><i class=\"idea icon\"></i>" + tag.name + "</a></div>")
+                }
+            },
+            error: function (e) {
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        })
+    });
+
+    /*关闭新建框*/
+    $("#tagOff").click(function () {
+        $("#addTagsForm").css("display", "none");
+    });
+
+    /*弹出新建框*/
+    $("#addTypes").click(function (event) {
+        event.preventDefault();
+        $("#addTypesForm").css("display", "block");
+    });
+
+    $("#typeSubmit").click(function (event) {
+        event.preventDefault();
+        $("#addTypesForm").css("display", "none");
+        const name = $("#newType").val();
+        const _type = new Type(name);
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "http://localhost:8080/api/type/add",
+            data: JSON.stringify(_type),
+            success:function (result) {
+                const Data = $.parseJSON(result);
+                const message = Data.message;
+                if(message === "OK"){
+                    $("#typesList").append("<div class=\"item\"><a href=\"\"><i class=\"idea icon\"></i>" + _type.name + "</a></div>")
+                }
+            },
+            error: function (e) {
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        })
+
+    })
+
+    /*关闭新建框*/
+    $("#typeOff").click(function () {
+        $("#addTypesForm").css("display", "none");
+    });
+
+
+
+
+
+    /*页面加载时，通过api获取数据填充*/
+    $(function () {
+        $.getJSON("http://localhost:8080/api/tag/getAll", function (result) {
+            // console.log(result);
+            $.each(result, function (i, field) {
+                $("#tagsList").append("<div class=\"item\"><a href=\"\"><i class=\"idea icon\"></i>" + field.name + "</a></div>")
+            })
+        });
+        $.getJSON("http://localhost:8080/api/type/getAll",function (result) {
+            $.each(result, function (i, _type) {
+                $("#typesList").append("<div class=\"item\"><a href=\"\"><i class=\"idea icon\"></i>" + _type.name + "</a></div>")
+            })
+
+        })
+    })
+</script>
+
+
+</body>
+<style type="text/css">
+</style>
+
+</html>

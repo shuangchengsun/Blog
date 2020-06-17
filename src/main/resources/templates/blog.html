@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>博客详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <!--    <link rel="stylesheet" href="/static/css/http_cdn.jsdelivr.net_semantic-ui_2.2.4_semantic.min.css">-->
+    <link rel="stylesheet" href="../static/css/myStyle.css">
+
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/static/lib/showdown/showdown.min.js"></script>
+</head>
+<body>
+
+<!--导航栏-->
+
+<nav th:replace="/fragment/fragmentNav::nav"></nav>
+
+<!--博客详情页-->
+<div class="m-padded-tb-larger">
+    <div class="ui container">
+        <div class="ui grid">
+            <!--显示左边的博客详情-->
+            <div class="twelve wide column">
+                <div class="ui">
+                    <h2 class="ui teal header center aligned" id="title"></h2>
+                    <div class="ui horizontal link list m-margin-left-biggest">
+                        <div class="item " id="time">
+                            <i class="calendar icon"></i>
+                        </div>
+                        <div class="item" id="view">
+                            <i class="eye icon"></i>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                    <div class="ui container m-padded-lr-big" id="mainContent">
+                        <div id="summery">
+                        </div>
+                        <div class="ui divider"></div>
+                        <div id="content">
+                        </div>
+                    </div>
+                    <!--<div class="ui divider"></div>-->
+                    <!--分享、赞赏、点赞-->
+                    <div class="ui grid">
+                        <div class="four wide column"></div>
+                        <div class="ui horizontal link list ten wide column">
+                            <div class="ui grid">
+                                <div class="five wide column"></div>
+                                <div class="five wide column">
+                                    <div class="ui basic segment" style="padding: 1px !important;">
+                                        <img src="https://unsplash.it/100/100?image=1005" alt="付款码" class="ui small  image"
+                                             id="payImg">
+                                    </div>
+                                </div>
+                                <div class="five wide column"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui grid " id="">
+                        <div class="four wide column"></div>
+                        <div class="ui horizontal link list ten wide column ">
+                            <div class="ui grid">
+                                <div class="five wide column">
+                                    <div class="item">
+                                        <button class="ui purple basic button share"><i class="share icon"></i>分享
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="five wide column">
+                                    <div class="item">
+
+                                        <button class="ui blue  basic button" id="payButton"><i
+                                                class="yen sign icon"></i>打赏
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="five wide column">
+                                    <div class="item">
+                                        <button class="ui blue  basic button"><i class="thumbs up icon"></i>赞</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="five wide column"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="oriTitle"  style="display: none" th:text="${blog.getTitle()}"></div>
+<div id="oriSummery" style="display: none" th:text="${blog.getSummery()}"></div>
+<div id="oriContent" style="display: none" th:text="${blog.getContent()}"></div>
+<div id="oriTime" style="display: none" th:text="${blog.getUpdateTime()}"></div>
+<div id="oriView" style="display: none" th:text="${blog.getViews()}"></div>
+<footer class="ui inverted vertical segment">
+    <div class="ui container center aligned">
+        <div class="ui  inverted divided grid">
+            <div class="three wide column">
+                <img src="../static/images/image1.png" class="ui rounded image" alt="" style="width: 9em">
+            </div>
+            <div class="four wide column">
+                <h4 class="ui inverted header"> 最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">用户故事</a>
+                    <a href="#" class="item">关于刻意练习的菜单</a>
+                    <a href="#" class="item">失败类菜单</a>
+                </div>
+            </div>
+            <div class="four wide column">
+                <h4 class="ui inverted header"> 联系我</h4>
+                <div class="ui inverted link list">
+                    <i class="item">Email：shuangchengsun@163.com</i>
+                    <i class="item">QQ：1015744873</i>
+                </div>
+            </div>
+            <div class="five wide column">
+                <h4 class="ui inverted header"> 关于我</h4>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="center">Copyright @ 2016-2020 Designed By Alan</p>
+    </div>
+</footer>
+
+<script>
+    $("#payButton").click(function () {
+        const dim = $("#payImg");
+        if (dim.css("visibility") === "hidden") {
+            dim.css("visibility", "visible");
+        } else {
+            dim.css("visibility", "hidden");
+        }
+    })
+    const converter = new showdown.Converter();
+    $(function () {
+        const t = $("#oriTitle").text();
+        const s = $("#oriSummery").text();
+        const c = $("#oriContent").text();
+        const time = $("#oriTime").text();
+        const view = $("#oriView").text()
+        $("#title").append(converter.makeHtml(t));
+        $("#summery").append(converter.makeHtml(s));
+        $("#content").append(converter.makeHtml(c));
+        $("#time").append(time);
+        $("#view").append(view);
+    })
+
+
+</script>
+</body>
+</html>

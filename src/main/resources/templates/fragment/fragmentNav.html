@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--导航栏模板-->
+    <meta charset="UTF-8">
+    <title>fragmentNav</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="/static/css/myStyle.css">
+</head>
+<body>
+<nav class="ui inverted attached segment m-padded-tb-mini" th:fragment="nav">
+    <div class="ui container">
+        <div class="ui grid">
+            <div class="seven wide column">
+                <div class="ui inverted secondary menu ">
+                    <h2 class="ui teal header item">Blog</h2>
+                    <a href="/" class="item"><i class="home icon"></i>首页</a>
+                    <a href="#" class="item"><i class="tags icon"></i>标签</a>
+                    <a href="#" class="item"><i class="idea icon"></i>分类</a>
+                    <a href="/admin/index" class="item"><i class="info icon"></i>个人中心</a>
+                </div>
+            </div>
+            <div class="five wide column " th:if="${session.user} == null">
+                <div class="right item m-padded-tb-small">
+                    <div class="ui icon input m-search-width">
+                        <input type="text" placeholder="搜索">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="four wide column" th:if="${session.user} == null">
+                <div class="center item">
+                    <a class="item m-padded-tb-mid" href="/admin/"><i class="user icon m-padded-tb-mid"></i>登录</a>
+                </div>
+            </div>
+            <div class="eight wide column" th:unless="${session.user} == null">
+                <div class="right item m-padded-tb-small">
+                    <div class="ui icon input m-search-width">
+                        <input type="text" placeholder="搜索">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+
+<div class="ui inverted attached segment m-padded-tb-mini" th:fragment="adminNav">
+    <div class="ui container">
+        <div class="ui grid">
+            <div class="seven wide column">
+                <div class="ui inverted secondary menu ">
+                    <h2 class="ui teal header item">Blog</h2>
+                    <a href="/" class="item"><i class="home icon"></i>首页</a>
+                    <a href="/admin/publish" class="item"><i class="tags icon"></i>写博客</a>
+                    <a href="/admin/message" class="item"><i class="idea icon"></i>私信管理</a>
+                    <a href="/admin/info" class="item" id="selfInfo"><i class="info icon"></i>个人信息</a>
+                </div>
+            </div>
+            <div class="eight wide column">
+                <div class="right item m-padded-tb-small">
+                    <div class="ui icon input m-search-width">
+                        <input type="text" placeholder="搜索">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

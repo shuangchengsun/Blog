@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <!--    <link rel="stylesheet" href="/static/css/http_cdn.jsdelivr.net_semantic-ui_2.2.4_semantic.min.css">-->
+    <link rel="stylesheet" href="../static/css/myStyle.css">
+</head>
+<body>
+<!--导航栏-->
+
+<nav th:replace="/fragment/fragmentNav::nav"></nav>
+
+<!--主体-->
+<div class="m-padded-tb-larger">
+    <div class="ui container">
+        <div class="ui grid">
+            <!--左边博客列表-->
+            <div class="eleven wide column">
+                <div class="ui top attached segment">
+                    <div class="ui middle aligned two column grid">
+                        <div class="column">
+                            <h3 class="ui teal header ">博客</h3>
+                        </div>
+                        <div class="right aligned column">
+                            共 <h2 class="ui orange header m-inline-block " id="blogLength"> </h2> 篇
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui attached  segment" id="blogArea">
+
+                    <!--<div class="ui padded vertical segment">
+                        <div class="ui grid">
+                            <div class="eleven wide column">
+                                <h3 class="ui header">博客标题</h3>
+                                <p class="m-text-tiny">
+                                    此处是博客的内容摘要。正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标的正确定义，圣诞节覅算法就开始的办法便是覅四点八零发i受到广泛喀什发给我了股份饭卡上播放发哈广发潍坊路i全额付给</p>
+                                <div class="ui grid">
+                                    <div class="twelve wide column">
+                                        <div class="ui horizontal link list">
+                                            <div class="item">
+                                                <img src="https://unsplash.it/100/100?image=1005" alt=""
+                                                     class="ui avatar image">
+                                                <div class="content"><a href="#" class="header">nikeName</a></div>
+                                            </div>
+                                            <div class="item">
+                                                <i class="calendar icon"></i>2020-5-11
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i>30
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="four wide column right aligned">
+                                        <a href="#" class="ui label teal basic"> 认知升级</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="five wide column">
+                                <a href="#" target="_blank">
+                                    <img src="https://unsplash.it/800/400?image=1005" alt="博客配图"
+                                         class="ui rounded image">
+                                </a>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+
+                <!--底部翻页-->
+                <div class="ui bottom attached segment">
+                    <div class="ui middle aligned two column grid">
+                        <div class="column">
+                            <a href="#" class="ui teal basic button">上一页</a>
+                        </div>
+                        <div class="right aligned column">
+                            <a href="#" class="ui teal basic button">下一页</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--右边的标签-->
+            <div class="five wide column">
+                <!--分类-->
+                <div class="ui segments m-margin-bottom-larger">
+                    <!--头部--分类-->
+                    <div class="ui secondary segment">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <i class="idea icon"></i>分类
+                            </div>
+                            <div class="right aligned column">
+                                <a href="#">more <i class="angle double right icon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--具体内容-->
+                    <div class="ui teal segment">
+                        <div class="ui fluid vertical menu" id="typeArea">
+                            <!--<a href="#" class="item">
+                                学习日志
+                                <div class="ui teal basic left pointing label">13</div>
+                            </a>-->
+                        </div>
+                    </div>
+                </div>
+
+                <!--标签-->
+                <div class="ui segments m-margin-bottom-larger">
+                    <!--头部--分类-->
+                    <div class="ui secondary segment">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <i class="tags icon"></i>分类
+                            </div>
+                            <div class="right aligned column">
+                                <a href="#">more <i class="angle double right icon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--具体内容-->
+                    <div class="ui teal segment" id="tagArea">
+                        <!--<a href="#" target="_blank" class="ui teal basic label m-margin-tb-small m-margin-lr-small">
+                            java
+                            <div class="detail"> 13</div>
+                        </a>-->
+
+                    </div>
+                </div>
+
+                <!--最新推荐-->
+                <div class="ui segments m-margin-bottom-larger">
+                    <!--头部--推荐-->
+                    <div class="ui secondary segment">
+                        <i class="bookmark icon"></i>最新推荐
+
+                    </div>
+                    <!--具体内容-->
+                    <div class="ui segment teal">
+                        <a href="#" target="_blank" class="m-text-color-black m-text-tiny">用户故事</a>
+                    </div>
+                    <div class="ui segment ">
+                        <a href="#" target="_blank" class="m-text-color-black m-text-tiny">用户故事</a>
+                    </div>
+                    <div class="ui segment ">
+                        <a href="#" target="_blank" class="m-text-color-black m-text-tiny">用户故事</a>
+                    </div>
+                    <div class="ui segment ">
+                        <a href="#" target="_blank" class="m-text-color-black m-text-tiny">用户故事</a>
+                    </div>
+                </div>
+
+                <!--二维码-->
+
+                <h4 class="ui horizontal divider header">扫码关注我</h4>
+                <div class="ui card centered" style="width: 70%">
+                    <img src="/static/images/image1.png" alt="" class="ui rounded image ">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--底部-->
+<footer class="ui inverted vertical segment">
+    <div class="ui container center aligned">
+        <div class="ui  inverted divided grid">
+            <div class="three wide column">
+                <img src="../static/images/image1.png" class="ui rounded image" alt="" style="width: 9em">
+            </div>
+            <div class="four wide column">
+                <h4 class="ui inverted header"> 最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">用户故事</a>
+                    <a href="#" class="item">关于刻意练习的菜单</a>
+                    <a href="#" class="item">失败类菜单</a>
+                </div>
+            </div>
+            <div class="four wide column">
+                <h4 class="ui inverted header"> 联系我</h4>
+                <div class="ui inverted link list">
+                    <i class="item">Email：shuangchengsun@163.com</i>
+                    <i class="item">QQ：1015744873</i>
+                </div>
+            </div>
+            <div class="five wide column">
+                <h4 class="ui inverted header"> 关于我</h4>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="center">Copyright @ 2016-2020 Designed By Alan</p>
+    </div>
+</footer>
+
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+
+<script id="showBlogTemplate" type="text/x-jquery-tmpl">
+    <div class="ui padded vertical segment">
+                        <div class="ui grid">
+                            <div class="eleven wide column">
+                                <a href="/show?id=${id}"><h3 class="ui header">${title}</h3></a>
+                                <p class="m-text-tiny">
+                                ${summery}
+                                </p>
+                                <div class="ui grid">
+                                    <div class="twelve wide column">
+                                        <div class="ui horizontal link list">
+                                            <div class="item">
+                                                <img src=${user.avatar} alt=""
+                                                     class="ui avatar image">
+                                                <div class="content"><a href="#" class="header">${user.nickName}</a></div>
+                                            </div>
+                                            <div class="item">
+                                                <i class="calendar icon"></i>${updateTime}
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i>${views}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="four wide column right aligned">
+                                        <a href="/show?id=${id}" class="ui label teal basic"> 认知升级</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="five wide column">
+                                <a href="#" target="_blank">
+                                    <img src=${labelPicture} alt="博客配图"
+                                         class="ui rounded image">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+</script>
+
+<script id="showTypeTemplate" type="text/x-jquery-tmpl">
+    <a href="#" class="item">
+            ${name}
+         <div class="ui teal basic left pointing label">13</div>
+    </a>
+</script>
+
+<script id="showTagTemplate" type="text/x-jquery-tmpl">
+    <a href="#" target="_blank" class="ui teal basic label m-margin-tb-small m-margin-lr-small">
+          ${name}
+       <div class="detail"> 13</div>
+    </a>
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $.getJSON("http://localhost:8080/api/blog/all", function (result) {
+            $("#blogLength").append(result.length)
+            $.each(result, function (i, blog) {
+                $("#showBlogTemplate").tmpl(blog).appendTo($("#blogArea"));
+            })
+        });
+        $.getJSON("http://localhost:8080/api/type/getAll", function (result) {
+            $.each(result, function (i, _type) {
+                $("#showTypeTemplate").tmpl(_type).appendTo($("#typeArea"));
+            })
+        });
+        $.getJSON("http://localhost:8080/api/tag/getAll",function (result) {
+            $.each(result, function (i, tag) {
+                $("#showTagTemplate").tmpl(tag).appendTo($("#tagArea"));
+            })
+        })
+
+    })
+</script>
+
+</body>
+</html>

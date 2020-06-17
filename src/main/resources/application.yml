@@ -1,0 +1,41 @@
+spring:
+  thymeleaf:
+    cache: false
+    mode: HTML
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://rm-2ze6tlyn0l3812nsmqo.mysql.rds.aliyuncs.com:3306/blog?useUnicode=true&characterEncoding=utf-8
+    username: alan
+    password: Sun196130
+  resources:
+    static-locations: classpath:/
+  main:
+    lazy-initialization: true
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: true
+
+  redis:
+    host: 101.200.186.217
+    port: 6379
+    password: sun196130
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 80
+        max-wait: -1
+        min-idle: 0
+    lettuce:
+      shutdown-timeout: 0
+    client-name: alan
+
+server:
+  port: 8080
+
+logging:
+  path: ./logs/
+  level:
+    root: info

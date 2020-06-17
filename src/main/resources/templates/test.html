@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+</head>
+<body>
+<h1>this is ori</h1>
+<div class="ui grid">
+    <div class="four wide column">
+        用户名
+    </div>
+    <div class="four wide column" id="username"></div>
+    <button id ="messageLoad" type="button" value="加载">加载</button>
+</div>
+</body>
+<script>
+    $("#messageLoad").click(function () {
+        $.getJSON("http://localhost:8080/api/userTest",function (data) {
+            $("#username").append(data.userName);
+        })
+    });
+</script>
+</html>
