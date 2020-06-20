@@ -2,17 +2,14 @@ package com.alan.blog.service.impl;
 
 import com.alan.blog.Exception.RedisException;
 import com.alan.blog.dao.UserDAOService;
-import com.alan.blog.dao.repository.UserRepository;
 import com.alan.blog.model.User;
 import com.alan.blog.service.UserService;
 import com.alan.blog.util.EncryptUtil;
 import com.alan.blog.util.TokenUtil;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +28,7 @@ public class UserServiceImpl implements UserService {
         String newToken = TokenUtil.getToken();
         String oldToken = user.getToken();
         user.setToken(newToken);
-        if(oldToken==null){
+        if (oldToken == null) {
             LOGGER.info("when updateToken, the oldToken is null, updateToken failed!");
             return;
         }
@@ -40,7 +37,6 @@ public class UserServiceImpl implements UserService {
         } catch (RedisException exception) {
             LOGGER.error(exception.getMessage());
         }
-
     }
 
     @Override
@@ -50,7 +46,6 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    @Transactional
     @Override
     /*用户登录*/
     public boolean userLogin(String username, String password, HttpSession session, HttpServletResponse response) {
@@ -77,7 +72,6 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    @Transactional
     @Override
     /*校验用户是否曾经登录过*/
     public boolean checkLogin(HttpServletRequest request, HttpServletResponse response) {
@@ -118,7 +112,7 @@ public class UserServiceImpl implements UserService {
                     session.setAttribute("user", user);
                     /*回写cookie*/
                     Cookie cookie = new Cookie("token", user.getToken());
-                    cookie.setMaxAge(10*60);
+                    cookie.setMaxAge(10 * 60);
                     response.addCookie(cookie);
                     return true;
                 } else {
@@ -173,5 +167,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getTestUser() {
         return userDAOService.getUserByName("alan");
+    }
+
+
+    @Override
+    public void userOff(User user) {
+
     }
 }

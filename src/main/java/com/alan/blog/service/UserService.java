@@ -23,4 +23,7 @@ public interface UserService {
     boolean checkLogin(HttpServletRequest request, HttpServletResponse response);
 
     User getTestUser();
+
+    /*用户登出*/
+    void userOff(User user);
 }

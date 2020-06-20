@@ -1,6 +1,7 @@
 package com.alan.blog.dao.redis.impl;
 
-import com.alan.blog.dao.redis.RedisDAOService;
+import com.alan.blog.Exception.RedisObjectNotFoundException;
+import com.alan.blog.dao.redis.RedisClient;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -12,8 +13,8 @@ import org.springframework.stereotype.Component;
 import java.util.Set;
 
 @Component
-public class RedisDAOServiceImpl implements RedisDAOService {
-    private final static Logger LOGGER = LoggerFactory.getLogger(RedisDAOServiceImpl.class);
+public class RedisClientImpl implements RedisClient {
+    private final static Logger LOGGER = LoggerFactory.getLogger(RedisClientImpl.class);
 
     @Autowired
     private StringRedisTemplate redisTemplate;
@@ -67,6 +68,7 @@ public class RedisDAOServiceImpl implements RedisDAOService {
         return redisTemplate.opsForSet().members(key);
     }
 
+    @Deprecated
     @Override
     public boolean removeKey(String key) {
         Boolean flag = redisTemplate.hasKey(key);
@@ -77,6 +79,7 @@ public class RedisDAOServiceImpl implements RedisDAOService {
         return delete != null && delete;
     }
 
+    @Deprecated
     @Override
     public boolean removeKeyFromSet(String key, String value) {
         Boolean member = redisTemplate.opsForSet().isMember(key, value);
@@ -85,5 +88,23 @@ public class RedisDAOServiceImpl implements RedisDAOService {
         }
         Long remove = redisTemplate.opsForSet().remove(key, value);
         return (remove != null && remove > 0);
+    }
+
+    @Override
+    public void deleteObject(String key) {
+        Boolean flag = redisTemplate.hasKey(key);
+        if(flag != null && !flag){
+            throw new RedisObjectNotFoundException("redis has no such object with key: "+key);
+        }
+        redisTemplate.delete(key);
+    }
+
+    @Override
+    public void deleteMember(String key, String value) {
+        Boolean flag = redisTemplate.opsForSet().isMember(key, value);
+        if(flag != null && !flag){
+            throw new RedisObjectNotFoundException("redis has no such object in set with key: "+key+" value: "+value);
+        }
+        redisTemplate.opsForSet().remove(key,value);
     }
 }

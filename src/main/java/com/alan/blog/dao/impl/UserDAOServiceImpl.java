@@ -2,10 +2,9 @@ package com.alan.blog.dao.impl;
 
 import com.alan.blog.Exception.RedisException;
 import com.alan.blog.dao.UserDAOService;
-import com.alan.blog.dao.redis.RedisDAOService;
+import com.alan.blog.dao.redis.RedisClient;
 import com.alan.blog.dao.repository.UserRepository;
 import com.alan.blog.model.User;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class UserDAOServiceImpl implements UserDAOService {
     private UserRepository userRepository;
 
     @Autowired
-    private RedisDAOService redisDAOService;
+    private RedisClient redisClient;
 
 
     @Override
@@ -57,7 +56,7 @@ public class UserDAOServiceImpl implements UserDAOService {
         /*写数据库*/
         userRepository.save(user);
         /*写缓存*/
-        boolean b = redisDAOService.setObject(user.getToken(), user);
+        boolean b = redisClient.setObject(user.getToken(), user);
         if (!b) {
             LOGGER.info("write to redis error, may caused by repeated token");
         }
@@ -72,10 +71,10 @@ public class UserDAOServiceImpl implements UserDAOService {
     @Override
     public void updateToken(String token, User user, String oldToken) {
 
-        if (redisDAOService.removeKey(oldToken)&&
-                redisDAOService.removeKeyFromSet("token", oldToken) &&
-                redisDAOService.setObject(token, user) &&
-                redisDAOService.setMembers("token", token)) {
+        if (redisClient.removeKey(oldToken)&&
+                redisClient.removeKeyFromSet("token", oldToken) &&
+                redisClient.setObject(token, user) &&
+                redisClient.setMembers("token", token)) {
         } else {
             throw new RedisException("updateToken error");
         }
@@ -87,7 +86,7 @@ public class UserDAOServiceImpl implements UserDAOService {
     public User getByToken(String token) {
         User user = null;
         try {
-            user = (User) redisDAOService.getObject(token, User.class);
+            user = (User) redisClient.getObject(token, User.class);
             if (user == null) {
                 /*数据不在redis中，去数据库拿*/
                 user = userRepository.findByToken(token);
@@ -96,12 +95,18 @@ public class UserDAOServiceImpl implements UserDAOService {
                     LOGGER.error("user with token: " + token + " is not exist!");
                 } else {
                     /*拿到了，写回redis*/
-                    redisDAOService.setObject(token, user);
+                    redisClient.setObject(token, user);
                 }
             }
         } catch (Exception exception) {
             LOGGER.error(exception.getMessage());
         }
         return user;
+    }
+
+
+    @Override
+    public void deleteUser(User user) {
+
     }
 }

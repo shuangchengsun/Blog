@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="blogQueryService" class="com.alan.blog.service.impl.BlogQueryServiceImpl" ></bean>
+
+    <bean id="userQueryService" class="com.alan.blog.service.impl.UserQueryServiceImpl"></bean>
+
+    <bean id="commonQueryManager" class="com.alan.blog.service.CommonQueryManager">
+        <property name="serviceMap">
+            <map>
+                <entry key="blogQuery" value-ref="blogQueryService"></entry>
+                <entry key="userQuery" value-ref="userQueryService"></entry>
+            </map>
+        </property>
+    </bean>
+
+</beans>
