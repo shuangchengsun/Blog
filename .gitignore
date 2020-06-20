@@ -1,0 +1,42 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+mvnw
+mvnw.cmd
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+logs/spring.log
+logs/spring.log.2020-06-13.0.gz
+logs/spring.log.2020-06-14.0.gz
+logs/spring.log.2020-06-15.0.gz
+logs/spring.log.2020-06-16.0.gz
+logs/spring.log.2020-06-17.0.gz
+logs/spring.log.2020-06-18.0.gz
