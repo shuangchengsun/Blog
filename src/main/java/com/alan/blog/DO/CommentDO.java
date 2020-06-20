@@ -1,40 +1,33 @@
-package com.alan.blog.model;
+package com.alan.blog.DO;
 
+import com.alan.blog.model.Blog;
+import com.alan.blog.model.Comment;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.*;
+import java.awt.image.ImageProducer;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-
-
-public class Comment {
-
-
+public class CommentDO {
     private Long id;
     private String nickName;
     private String email;
     private String content;
     private String avatar;
+
     private Date createTime;
+
+
     private Blog blog;
+
+
+    @JsonIgnore
+    private List<Comment> replyComments = new ArrayList<>();
+
+
     private Comment parentComment;
-    private Long blogId;
-    private Long parentID;
-
-    public Long getBlogId() {
-        return blogId;
-    }
-
-    public void setBlogId(Long blogId) {
-        this.blogId = blogId;
-    }
-
-    public Long getParentID() {
-        return parentID;
-    }
-
-    public void setParentID(Long parentID) {
-        this.parentID = parentID;
-    }
 
     public Long getId() {
         return id;
@@ -92,6 +85,13 @@ public class Comment {
         this.blog = blog;
     }
 
+    public List<Comment> getReplyComments() {
+        return replyComments;
+    }
+
+    public void setReplyComments(List<Comment> replyComments) {
+        this.replyComments = replyComments;
+    }
 
     public Comment getParentComment() {
         return parentComment;

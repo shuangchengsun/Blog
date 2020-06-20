@@ -24,7 +24,6 @@ class BlogApplicationTests {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
-
     @Test
     void contextLoads() {
         redisTemplate.opsForValue().set("name", "alan");

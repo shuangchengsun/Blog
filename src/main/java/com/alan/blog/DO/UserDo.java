@@ -1,12 +1,16 @@
-package com.alan.blog.model;
+package com.alan.blog.DO;
 
+import com.alan.blog.model.Blog;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
+public class UserDo {
 
-public class User {
     /*主键ID*/
     private long id;
     /*昵称*/
@@ -28,6 +32,9 @@ public class User {
     private Date createTime;
 
     private Date updateTime;
+
+    @JsonIgnore
+    private List<Blog> blogs = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -101,6 +108,13 @@ public class User {
         this.updateTime = updateTime;
     }
 
+    public List<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(List<Blog> blogs) {
+        this.blogs = blogs;
+    }
 
     public String getToken() {
         return token;
@@ -109,5 +123,21 @@ public class User {
     public void setToken(String token) {
         this.token = token;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nickName='" + nickName + '\'' +
+                ", email='" + email + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", type=" + type +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
+    }
+
 
 }

@@ -1,15 +1,16 @@
-package com.alan.blog.model;
+package com.alan.blog.DO;
 
-
+import com.alan.blog.model.Comment;
+import com.alan.blog.model.Tag;
+import com.alan.blog.model.Type;
+import com.alan.blog.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-public class Blog {
+public class BlogDO {
 
     private Long id;
 
@@ -27,28 +28,21 @@ public class Blog {
     private String summery;             //摘要
     private String createTime;            //此处标志创建时间
     private String updateTime;            //此处标志最后更新时间
-    private Long typeId;
-    private Long userId;
 
+    @ManyToOne
+    private Type type;                  //此处标志分类
 
-    public Long getTypeId() {
-        return typeId;
-    }
+    @ManyToMany(cascade = {CascadeType.PERSIST})
 
-    public void setTypeId(Long typeId) {
-        this.typeId = typeId;
-    }
+    @JsonIgnore
+    private List<Tag> tags = new ArrayList<>(); //此处是标签列表
 
-    public Long getUserId() {
-        return userId;
-    }
+    @ManyToOne
+    private User user;                  //此处标志作者
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Blog() {
-    }
+    @OneToMany(mappedBy = "blog")
+    @JsonIgnore
+    private List<Comment> comments = new ArrayList<>(); //评论列表
 
     public String getSummery() {
         return summery;
@@ -162,6 +156,40 @@ public class Blog {
         this.updateTime = updateTime;
     }
 
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+
+
     @Override
     public String toString() {
         return "Blog{" +
@@ -179,6 +207,11 @@ public class Blog {
                 ", summery='" + summery + '\'' +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
+                ", type=" + type +
+                ", tags=" + tags +
+                ", user=" + user +
+                ", comments=" + comments +
                 '}';
     }
+
 }
