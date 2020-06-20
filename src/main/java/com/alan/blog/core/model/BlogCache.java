@@ -25,7 +25,9 @@ public class BlogCache {
         if(id == null || !containBlog(id)){
             return null;
         }
-        return cache.get(id);
+        Blog blog = cache.get(id);
+        blog.setViews(1+blog.getViews());
+        return blog;
     }
     public void setBlog(Blog blog){
         if(blog == null)
