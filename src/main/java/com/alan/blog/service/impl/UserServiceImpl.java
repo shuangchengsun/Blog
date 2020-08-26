@@ -1,11 +1,11 @@
 package com.alan.blog.service.impl;
 
 import com.alan.blog.Exception.RedisException;
-import com.alan.blog.dao.UserDAOService;
+import com.alan.blog.dal.dao.UserDAOService;
 import com.alan.blog.model.User;
 import com.alan.blog.service.UserService;
-import com.alan.blog.util.EncryptUtil;
-import com.alan.blog.util.TokenUtil;
+import com.alan.blog.common.util.EncryptUtil;
+import com.alan.blog.common.util.TokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

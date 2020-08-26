@@ -1,11 +1,9 @@
 package com.alan.blog.service.impl;
 
-import com.alan.blog.dao.BlogDao;
-import com.alan.blog.dao.repository.BlogRepository;
+import com.alan.blog.dal.dao.repository.BlogRepository;
 import com.alan.blog.model.*;
 import com.alan.blog.service.BlogService;
 import com.alan.blog.service.CommonQueryManager;
-import com.alan.blog.service.CommonQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

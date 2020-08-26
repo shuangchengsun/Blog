@@ -1,6 +1,6 @@
 package com.alan.blog.service.impl;
 
-import com.alan.blog.dao.UserDAOService;
+import com.alan.blog.dal.dao.UserDAOService;
 import com.alan.blog.model.CommonQueryModel;
 import com.alan.blog.model.CommonQueryResult;
 import com.alan.blog.service.CommonQueryService;

@@ -1,10 +1,9 @@
 package com.alan.blog.service.impl;
 
-import com.alan.blog.dao.BlogDao;
+import com.alan.blog.dal.dao.BlogDao;
 import com.alan.blog.model.*;
 import com.alan.blog.service.CommonQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.LinkedList;

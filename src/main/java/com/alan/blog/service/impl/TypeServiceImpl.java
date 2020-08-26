@@ -1,6 +1,6 @@
 package com.alan.blog.service.impl;
 
-import com.alan.blog.dao.repository.TypeRepository;
+import com.alan.blog.dal.dao.repository.TypeRepository;
 import com.alan.blog.model.Type;
 import com.alan.blog.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
